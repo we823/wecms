@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	  <meta charset="utf-8">
+	
+    <title> 后台管理程序</title>
+
+	  {include file="./base_css.html"}
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    
+    {literal}
+    <style>
+    	body{
+    		background-color: #e4e6e9;
+    		height: 100%;
+    		overflow: hidden;
+     }
+    </style>
+    {/literal}
+  </head>
+  
+  <body class="no-skin">
+    <div id="navbar" class="navbar navbar-default">
+    	<div class="navbar-container" id="navbar-container">
+    		<div class="navbar-header pull-left">
+    			<a href="#" class="navbar-brand">
+    				<small>
+    					<i class="fa fa-leaf"></i> <span class="company"></span> 网站管理平台
+    				</small>
+    			</a>
+    		</div>
+    		<div class="nav-collapse nav-inner">
+	    		
+	    	</div>
+    		<div class="navbar-buttons navbar-header pull-right">
+    			<ul class="nav ace-nav">
+    				<li class="light-blue">
+    						<span style="padding-right:50px; line-height:28px">
+    							欢迎,{$username|default:'未登录'}   <button class="btn btn-default" onclick="getOut()">退出后台管理</button>
+    						</span>
+    				</li>
+    			</ul>
+    		</div>
+    	</div>
+    </div>
+    <!-- end nav bar -->
+    <!-- start container -->
+    <div id="main-container" class="main-container">
+    	<!-- sidebar -->
+    	<div id="sidebar" class="sidebar responsive">
+    		<ul id="slide-menu" class="nav nav-list" style="top:0">
+                <li class="hsub open" data-id="item1">
+                   <a href="#" class="dropdown-toggle">
+                      <i class="menu-icon fa fa-tachometer"></i>
+                      <span class="menu-text"> 新闻管理 </span> <b class="arrow fa fa-angle-down"></b>
+                   </a>
+                   <b class="arrow"></b>
+                   <ul class="submenu nav-show" style="display: block">
+                        <li class="">
+                            <a href="?m=manage&c=news&a=preAdd" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>新闻添加</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+        
+                        <li class="">
+                            <a href="?m=manage&c=news&a=list" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>新闻列表</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                <!-- news li -->
+                
+                <li>
+                   <a href="#" class="dropdown-toggle">
+                      <i class="menu-icon fa fa-tachometer"></i>
+                      <span class="menu-text"> 产品管理 </span> <b class="arrow fa fa-angle-down"></b>
+                   </a>
+                   <b class="arrow"></b>
+                   <ul class="submenu">
+                        <li class="">
+                            <a href="?m=manage&c=product&a=preAdd" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>产品添加</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+        
+                        <li class="">
+                            <a href="?m=manage&c=product&a=list" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>产品列表</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="hidden">
+                   <a href="#" class="dropdown-toggle">
+                      <i class="menu-icon fa fa-tachometer"></i>
+                      <span class="menu-text"> 项目案例管理 </span> <b class="arrow fa fa-angle-down"></b>
+                   </a>
+                   <b class="arrow"></b>
+                   <ul class="submenu">
+                        <li class="">
+                            <a href="application/preAdd.php" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>项目案例添加</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+        
+                        <li class="">
+                            <a href="application/list.php" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>项目案例列表</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="hidden">
+                   <a href="#" class="dropdown-toggle">
+                      <i class="menu-icon fa fa-tachometer"></i>
+                      <span class="menu-text"> 团队管理 </span> <b class="arrow fa fa-angle-down"></b>
+                   </a>
+                   <b class="arrow"></b>
+                   <ul class="submenu">
+                        <li class="">
+                            <a href="team/preAdd.php" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>团队信息添加</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+        
+                        <li class="">
+                            <a href="team/list.asp" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>团队信息列表</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="hidden">
+                   <a href="#" class="dropdown-toggle">
+                      <i class="menu-icon fa fa-tachometer"></i>
+                      <span class="menu-text"> 合作伙伴信息管理 </span> <b class="arrow fa fa-angle-down"></b>
+                   </a>
+                   <b class="arrow"></b>
+                   <ul class="submenu">
+                        <li class="">
+                            <a href="cooperation/preAdd.php" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>合作伙伴信息添加</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+        
+                        <li class="">
+                            <a href="cooperation/list.php" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>合作伙伴信息列表</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="hidden" data-id="item2">
+                   <a href="#" class="dropdown-toggle">
+                      <i class="menu-icon fa fa-tachometer"></i>
+                      <span class="menu-text"> 栏目管理 </span> <b class="arrow fa fa-angle-down"></b>
+                   </a>
+                   <b class="arrow"></b>
+                   <ul class="submenu">
+                        <li class="">
+                            <a href="channel/preAdd.php" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>栏目添加</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+        
+                        <li class="">
+                            <a href="channel/list.php" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>栏目列表</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                <!-- /.li1 -->
+                <li class="" data-id="item3">
+                   <a href="#" class="dropdown-toggle">
+                      <i class="menu-icon fa fa-tachometer"></i>
+                      <span class="menu-text"> 用户管理 </span> <b class="arrow fa fa-angle-down"></b>
+                   </a>
+                   <b class="arrow"></b>
+                   <ul class="submenu">
+                        <li class="">
+                            <a href="?m=manage&c=user&a=preAdd" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>用户添加</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+        
+                        <li class="">
+                            <a href="?m=manage&c=user&a=list" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>用户列表</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                <!-- /item3 -->
+                <li class="">
+                   <a href="#" class="dropdown-toggle">
+                      <i class="menu-icon fa fa-tachometer"></i>
+                      <span class="menu-text"> 网站管理 </span> <b class="arrow fa fa-angle-down"></b>
+                   </a>
+                   <b class="arrow"></b>
+                   <ul class="submenu">
+                        <li class="">
+                            <a href="?m=manage&c=config&a=preEdit&id=1" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>基本配置</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+        
+                        <li class="hidden">
+                            <a href="?m=manage&c=guestbook&a=list" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>留言板管理</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                        
+                        <li class="hidden">
+                            <a href="?m=manage&c=slider&a=list" target="rightContent">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                <span>图片管理</span>
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+    	</div>
+    	<!-- end sidebar -->
+    	<!-- righe main content -->
+    	<div class="main-content">
+    		<iframe name="rightContent" id="rightContent" style="border:0; width:100%; min-height:580px; overflow: hidden;" src="?m=manage&c=about"></iframe>
+    		<div id="footer" class="row-fluid">
+    	     Copyright &copy; 2016-2018 <span class="company"></span> - Power By
+        </div>
+    	</div>
+    </div>
+    <!-- end container -->
+
+    {include file="./base_js.html"}
+    
+    <script src="static/skin/manage/js/base.js"></script>
+    
+    <script>
+    	$(function(){
+			  root.company();
+		  });
+		
+			function getOut(){
+				location.href="?m=manage&c=logout";	
+			}
+    </script>
+  </body>
+</html>
