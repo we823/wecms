@@ -1,0 +1,103 @@
+    {include file="header.html" title="首頁" hasTitle=false}
+	</head>
+
+	<body>
+		<header class="header">
+			<div class="container">
+				<div class="row">
+					<!--logo-->
+					<div class="col-md-4">
+						<img src="{$skin_path}/img/nav_img/logo_326x74.jpg" />
+					</div>
+					<!--logo end-->
+
+					<!--nav-->
+					<nav class="col-md-5">
+						<ul class="nav nav-pills">
+							<li><a class="active" href="index.php">首頁</a></li>
+							<li><a href="?c=aboutus">關於我們</a></li>
+							<li><a href="?c=news">新聞中心</a></li>
+							<li><a href="?c=product">產品中心</a></li>
+							<li><a href="?c=contactus">聯繫我們</a></li>
+						</ul>
+					</nav>
+					<!--nav end-->
+
+					<div class="col-md-3">
+						<div class="col-md-8 no-padding">
+							<img class="" src="{$skin_path}/img/nav_img/nav_right-top-185x24.png" />
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search for...">
+								<span class="input-group-btn">
+							        <button class="btn btn-default" type="button">
+							       		<i class="glyphicon glyphicon-search"></i>
+							        </button>
+							    </span>
+							</div>
+							<!-- /input-group -->
+						</div>
+						<div class="col-md-4 add-us">
+							<a href="javascript:void(0)" onclick="join_favorite(window.location, document.title)"><img src="static/skin/default/img/home/shoucang.png" /></a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</header>
+
+		<div class="banner banner-index">
+			<div class="container">
+				<img src="{$skin_path}/img/home/index-back_1052x297.jpg" />
+			</div>
+		</div>
+
+		<div class="main-product padding-top">
+			<div class="container">
+				<div class="col-md-1 col-sm-1 no-padding">
+					<img src="{$skin_path}/img/home/pro_back-62x302.jpg" />
+				</div>
+				<div class="col-md-11 col-sm-11 no-padding-left padding-top">
+					<div class="marquee">
+						{foreach $products as $product}
+						<div class="pull-left" style="width: 320px">
+							<div class="text-center">
+								<span><a href="?c=product_detail&id={$product.id}" target="_blank">{$product.title}</a></span>
+							</div>
+							<a href="?c=product_detail&id={$product.id}" target="_blank" title="{$product.title}">
+								<img src="{$product.linkurl}" alt="{$product.title}">
+							</a>
+						</div>
+						{/foreach}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+		{include file="footer.html"}
+		<script src="static/asset/marquee/jquery.marquee.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			productMarquee();
+		});
+		function productMarquee(){
+			$('.marquee').marquee({
+				//speed in milliseconds of the marquee
+				duration: 12000,
+				//gap in pixels between the tickers
+				gap: 0,
+				//time in milliseconds before the marquee will start animating
+				delayBeforeStart: 1000,
+				//'left' or 'right'
+				direction: 'left',
+				//true or false - should the marquee be duplicated to show an effect of continues flow
+				duplicated: true,
+				startVisible: true,
+				pauseOnHover:true
+			});
+		}
+			
+		</script>
+	</body>
+
+</html>

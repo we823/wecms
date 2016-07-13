@@ -1,0 +1,338 @@
+@charset 'utf-8';
+body {
+  font-family: "微软雅黑";
+  font-size: 14px;
+  height: 100%;
+  min-height: 100%;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+.no-padding {
+  padding: 0;
+}
+.no-padding-left {
+  padding-left: 0;
+}
+.no-padding-right {
+  padding-right: 0;
+}
+.padding-top {
+  padding-top: 30px;
+}
+.margin-bottom {
+  margin-bottom: 15px;
+}
+.right-line {
+  border-right: 1px solid #ccc;
+}
+.bottom-line {
+  border-bottom: 2px solid #ccc;
+}
+.header {
+  height: 74px;
+  overflow: hidden;
+  border-bottom: 1px solid #333;
+  box-shadow: 0 1px 10px #ccc;
+}
+.nav {
+  line-height: 55px;
+}
+.nav > li > a {
+  padding-bottom: 0;
+  color: #333;
+  font-weight: 700;
+}
+.nav > li > a:hover {
+  color: #fff;
+  background: url(../img/home/nva_back-2x66.png) repeat-x 0 0;
+}
+.active {
+  color: #fff !important;
+  background: url(../img/home/nva_back-2x66.png) repeat-x 0 0;
+}
+.input-group {
+  top: 2px;
+}
+.input-group input {
+  height: 26px;
+  padding: 4px;
+}
+.input-group .btn {
+  padding: 1px 10px;
+}
+.add-us {
+  margin-top: 3px;
+}
+.banner {
+  margin-top: 35px;
+  overflow: hidden;
+  background-size: auto;
+}
+.banner-index {
+  background: url("../img/home/show-back.jpg") repeat-x left bottom;
+}
+.banner-aboutus {
+  background: url("../img/aboutus/inside_showback.jpg") repeat-x left bottom;
+}
+.banner-new {
+  background: url("../img/news/top-showback.jpg") repeat-x left bottom;
+}
+.banner-new span {
+  display: block;
+  padding-top: 10px;
+  padding-left: 50px;
+  height: 44px;
+}
+.banner-new span:first-child {
+  font-size: 30px;
+  color: #fff;
+}
+.banner-new span:last-child {
+  font-size: 22px;
+  color: #666;
+  text-align: center;
+  font-weight: 700;
+}
+.banner-new img {
+  margin-right: 40px;
+  margin-bottom: 53px;
+}
+.banner-product {
+  background: url("../img/products/top-showback.png") repeat-x 0 0;
+}
+.banner-product span {
+  display: inline-block;
+  margin: 25px 0 0 30px;
+  font-size: 30px;
+  color: #fff;
+}
+.banner-contactus {
+  height: 52px;
+  background: url(../img/contactus/top-back.png) repeat-x 0 0;
+}
+.banner-contactus span {
+  display: block;
+  margin-left: 30px;
+  font-size: 30px;
+  color: #fff;
+}
+.marquee {
+  max-width: 100%;
+  overflow: hidden;
+}
+.marquee .pull-left {
+  margin: 0 10px;
+}
+.marquee span {
+  display: block;
+  margin-top: 10px;
+}
+.marquee-product img {
+  width: 98%;
+}
+.aboutus-bg {
+  background: url("../img/aboutus/about-back_1170x840.png") no-repeat center 20px;
+}
+.about-us {
+  padding-right: 40px;
+}
+.about-us p {
+  margin-bottom: 20px;
+  font: 14px/1.7 "微软雅黑";
+}
+.text-bg {
+  display: block;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 31px;
+  color: #fff;
+  background: url("../img/aboutus/titleback_519x31.png") no-repeat #e89428;
+}
+.marquee-product span {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+.new-list {
+  padding-left: 0;
+  padding-right: 20px;
+  list-style: none;
+}
+.new-list .item {
+  margin-bottom: 20px;
+  height: 100px;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.new-list .item a {
+  display: inline-block;
+  color: #333;
+  text-indent: 1.2em;
+  line-height: 88px;
+  vertical-align: bottom;
+}
+.new-list .new-date {
+  display: inline-block;
+}
+.new-list .new-date span {
+  display: block;
+}
+.new-list .new-date span:first-child {
+  font-size: 26px;
+  color: #999;
+}
+.new-list .new-date span:last-child {
+  font-size: 36px;
+  color: #666;
+  text-align: center;
+}
+.product-nav {
+  padding-left: 0;
+  padding-right: 20px;
+  list-style: none;
+}
+.product-nav li {
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #ccc;
+  text-indent: 1em;
+}
+.product-nav li.active a {
+  color: #fff;
+}
+.product-nav a {
+  color: #666;
+  display: block;
+}
+.product-showcase {
+  height: auto;
+  /*
+    div {
+        width: 33.3333%;
+        padding: 20px 15px;
+    }
+    */
+}
+.product-showcase a {
+  font-family: "新宋体";
+  color: #999;
+}
+.product-showcase a:first-child {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+}
+.product-showcase img {
+  width: 100%;
+  max-height: 95%;
+}
+.download-bg {
+  line-height: 2;
+  background-color: #e99415;
+}
+.download-bg a {
+  margin-right: 30px;
+  color: #fff;
+}
+.product-title {
+  width: 100%;
+  height: 20px;
+  border-bottom: 1px solid #ccc;
+  background: url(../img/products/taipen_logo_115x17.png) no-repeat right top;
+}
+.product-description,
+.product-parameters {
+  color: #666;
+  line-height: 1.5;
+}
+.product-pic-max {
+  padding: 8px;
+}
+.product-pic-max img {
+  margin: 0 auto;
+  width: 80%;
+}
+.product-pic-min {
+  position: relative;
+  max-height: 110px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+.product-pic-min span {
+  display: none;
+  width: 30px;
+  height: 108px;
+  line-height: 108px;
+  cursor: pointer;
+}
+.product-pic-min span:first-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.product-pic-min span:last-child {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+.product-pic-min span i {
+  margin-left: 8px;
+  color: #fff;
+}
+.product-pic-min:hover span {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.product-pic-min > div {
+  position: relative;
+  float: left;
+  width: 25%;
+  padding: 8px;
+}
+.contact h4 {
+  padding-left: 17px;
+  font-size: 28px;
+}
+.contact-cn p,
+.contact-en p {
+  color: #666;
+}
+.contact-cn p:first-child {
+  font-size: 18px;
+}
+.map span {
+  display: inline-block;
+}
+.map span:first-child {
+  margin: 0 15px 15px 0;
+  font-size: 28px;
+}
+footer {
+  margin-top: 30px;
+  overflow: hidden;
+  background: #999;
+}
+footer div > div {
+  margin-top: 15px;
+}
+footer p {
+  font-family: "新宋体";
+  font-size: 12px;
+  line-height: 1.1;
+  color: #fff;
+}
+footer p img {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border: none;
+}

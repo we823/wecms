@@ -1,0 +1,112 @@
+    {include file="header.html" title="關於我們"}
+	</head>
+
+	<body>
+		<header class="header">
+			<div class="container">
+				<div class="row">
+					<!--logo-->
+					<div class="col-md-4">
+						<img src="{$skin_path}/img/nav_img/nab-Logo_218x74.jpg" />
+					</div>
+					<!--logo end-->
+
+					<!--nav-->
+					<nav class="col-md-5">
+						<ul class="nav nav-pills">
+							<li><a href="index.php">首頁</a></li>
+							<li><a class="active" href="#">關於我們</a></li>
+							<li><a href="?c=news">新聞中心</a></li>
+							<li><a href="?c=product">產品中心</a></li>
+							<li><a href="?c=contactus">聯繫我們</a></li>
+						</ul>
+					</nav>
+					<!--nav end-->
+
+					<div class="col-md-3">
+						<div class="col-md-8 no-padding">
+							<img class="" src="{$skin_path}/img/nav_img/nav_right-top-185x24.png" />
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search for...">
+								<span class="input-group-btn">
+							        <button class="btn btn-default" type="button">
+							       		<i class="glyphicon glyphicon-search"></i>
+							        </button>
+							    </span>
+							</div>
+							<!-- /input-group -->
+						</div>
+						<div class="col-md-4 add-us">
+							<a href="#"><img src="{$skin_path}/img/home/shoucang.png" /></a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</header>
+
+		<div class="banner banner-aboutus">
+			<div class="container">
+				<img class="pull-right" src="{$skin_path}/img/aboutus/about_back.jpg" />
+			</div>
+		</div>
+
+		<div class="padding-top">
+			<div class="aboutus-bg container">
+				<div class="about-us col-md-6">
+					<p>上海臺蓬機械設備有限公司是由臺蓬集團為拓展中國市場而投資設立的大陸唯壹運營機構。本公司專業從事集團自主研發，用於生產工程機械專用膠管的數控全自動鋼絲纏繞機，數控鋼絲合股機，高速鋼 絲編織機在中國大陸區域的設備銷售，安裝調試，售後服務以及零件配套等工作。
+					臺蓬集團於2008年成立，是壹家制造精密設備的專業化企業，產品以航空、軍工、高端橡塑設備為主。公司擁有歐美工程師為主的強大設計團隊，前沿設計理念，專業檢測設備，以及嚴格的生產工藝流程，是經過德國、美國、意大利等國家企業考核並為其提供橡塑設備配套的專業廠商。
+					上海臺蓬機械設備有限公司秉承誠信、創新的經營理念，願與廣大中國膠管企業攜手合作，為您的產品升級換代，邁向更廣大市場，共同為實現中華民族偉大復興略盡綿薄之力！</p>
+					
+					<p>Shanghai Taipen Machinery &amp; Equipment Co., Ltd. is the only operational organization founded by Taipen Group in mainland China to expand Chinese market. The company is specialized in sales, testing and installation, after sale service and spare parts of engineering machinery dedicated hose Steel wire spiral machines, Wire bobbin winders, and Rotary wire braiders that manufactured and developed by Taipen Group in mainland China region.</p>
+					<p>Taipen Group, established in 2008, is a professional manufacturer of precision devices utilized in aviation, military, and advanced rubber industries. The group has a strong design team that has majority engineers from Europe and America, cutting-edge design concepts, professional testing equipment, and strict production process. Taipen Group is a professional supplier of rubber and plastic equipment to many German, American, and Italian companies, and has passed their assessments.</p>
+					<p>Shanghai Taipen Machinery &amp; Equipment Co., Ltd., upholding the business philosophy of integrity and innovation, wish to cooperate with all Chinese hose enterprises, helping with your product upgrading, broadening the market, and contributing to a great rejuvenation of the Chinese nation.</p>
+					<p></p>
+				</div>
+				<div class="col-md-6">
+					<div class="margin-bottom">
+						<span class="text-bg">涉及行業 <small>Involved in industry</small></span>
+						<div class="row">
+							<div class="col-md-6"><img src="{$skin_path}/img/aboutus/img_one.jpg"/></div>
+							<div class="col-md-6"><img src="{$skin_path}/img/aboutus/img_two.jpg"/></div>
+						</div>
+					</div>
+					
+					<div>
+						<span class="text-bg">我們的產品 <small>OUR Products</small></span>
+						<div class="marquee marquee-product" style="min-height: 340px; max-height: 550px;">
+							{foreach $products as $product}
+							<div style="height: 380px">
+								<a href="?c=product_detail&id={$product.id}" title="产品查看" target="_blank"><img src="{$product.linkurl}" alt="{$product.title}" style="max-height: 360px; width: 95%; float: right;"></a>
+								<span style="float: left; width: 15px;">{$product.title}</span>
+							</div>
+							{/foreach}
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+		{include file="footer.html"}
+		
+		<script src="static/asset/marquee/jquery.marquee.min.js"></script>
+		<script>
+			$('.marquee').marquee({
+				//speed in milliseconds of the marquee
+				duration: 25000,
+				//gap in pixels between the tickers
+				gap: 0,
+				//time in milliseconds before the marquee will start animating
+				delayBeforeStart: 1000,
+				//'left' or 'right'
+				direction: 'up',
+				//true or false - should the marquee be duplicated to show an effect of continues flow
+				duplicated: true,
+				startVisible: true,
+				pauseOnHover: true
+			});
+		</script>
+	</body>
+
+</html>
