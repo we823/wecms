@@ -1,0 +1,96 @@
+<include file="Common/header" title="新聞中心"/>
+	</head>
+
+	<body>
+		<header class="header">
+			<div class="container">
+				<div class="row">
+					<!--logo-->
+					<div class="col-md-4">
+						<img src="{:C('skin_path')}/img/nav_img/nab-Logo_218x74.jpg" />
+					</div>
+					<!--logo end-->
+
+					<!--nav-->
+					<nav class="col-md-5">
+						<ul class="nav nav-pills">
+							<li><a href="{:C('index_url')}">首頁</a></li>
+							<li><a href="{:C('aboutus_url')}">關於我們</a></li>
+							<li><a class="active" href="#">新聞中心</a></li>
+							<li><a href="{:C('product_url')}">產品中心</a></li>
+							<li><a href="{:C('contactus_url')}">聯繫我們</a></li>
+						</ul>
+					</nav>
+					<!--nav end-->
+
+					<div class="col-md-3">
+						<div class="col-md-8 no-padding">
+							<img class="" src="{:C('skin_path')}/img/nav_img/nav_right-top-185x24.png" />
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search for...">
+								<span class="input-group-btn">
+							        <button class="btn btn-default" type="button">
+							       		<i class="glyphicon glyphicon-search"></i>
+							        </button>
+							    </span>
+							</div>
+							<!-- /input-group -->
+						</div>
+						<div class="col-md-4 add-us">
+							<a href="#"><img src="{:C('skin_path')}/img/home/shoucang.png" /></a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</header>
+
+		<div class="banner banner-new">
+			<div class="container">
+				<div class="row">
+					<div class="pull-left">
+						<span>新聞中心 <small>企業文化</small></span>
+						<span>卓越品質　源自台灣</span>
+					</div>
+					<img class="pull-right" src="{:C('skin_path')}/img/news/top-showimg-right_189x98.png" />
+				</div>
+			</div>
+		</div>
+
+		<div class="padding-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 right-line">
+						<ul class="new-list">
+							<empty name="newsList">
+								<li class="item">暂时无记录</li>
+							<else/>
+								<foreach name="newsList" item="news">
+								<li class="item">
+									<span class="new-date text-center">
+										<span>{$news.addtime|strtotime|date='m.d',###}</span>
+										<span>{$news.addtime|strtotime|date='Y',###}</span>
+									</span>
+									<a class="news-detail" href="javascript:void(0)" data-id="{$news.id}">{$news.title}</a>
+								</li>
+								
+							   </foreach>
+						   </empty>
+
+						</ul>
+						<div class="row text-center">
+							<a href="">上一頁</a>
+							<a href="">下一頁</a>
+						</div>
+					</div>
+					<div id="news-content" class="about-us col-md-7 col-md-offset-1">
+						{$firstNews.content}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<include file="Common/footer"/>
+	</body>
+
+</html>

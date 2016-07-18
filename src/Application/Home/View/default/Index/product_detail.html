@@ -1,0 +1,118 @@
+<include file="Common/header" title="產品詳情 - 產品中心"/>
+	</head>
+
+	<body>
+		<header class="header">
+			<div class="container">
+				<div class="row">
+					<!--logo-->
+					<div class="col-md-4">
+						<img src="{:C('skin_path')}/img/nav_img/nab-Logo_218x74.jpg" />
+					</div>
+					<!--logo end-->
+
+					<!--nav-->
+					<nav class="col-md-5">
+						<ul class="nav nav-pills">
+							<li><a href="{:C('index_url')}">首頁</a></li>
+							<li><a href="{:C('aboutus_url')}">關於我們</a></li>
+							<li><a href="{:C('news_url')}">新聞中心</a></li>
+							<li><a class="active" href="#">產品中心</a></li>
+							<li><a href="{:C('contactus_url')}">聯繫我們</a></li>
+						</ul>
+					</nav>
+					<!--nav end-->
+
+					<div class="col-md-3">
+						<div class="col-md-8 no-padding">
+							<img class="" src="{:C('skin_path')}/img/nav_img/nav_right-top-185x24.png" />
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search for...">
+								<span class="input-group-btn">
+							        <button class="btn btn-default" type="button">
+							       		<i class="glyphicon glyphicon-search"></i>
+							        </button>
+							    </span>
+							</div>
+							<!-- /input-group -->
+						</div>
+						<div class="col-md-4 add-us">
+							<a href="#"><img src="{:C('skin_path')}/img/home/shoucang.png" /></a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</header>
+
+		<div class="banner banner-product">
+			<div class="container">
+				<div class="row">
+					<div class="pull-left">
+						<span>產品中心</span>
+					</div>
+					<img class="pull-right" src="{:C('skin_path')}/img/products/p_topimg-left_295x111.png" />
+				</div>
+			</div>
+		</div>
+
+		<div class="padding-top">
+			<div class="container">
+				<div class="row">
+					<if condition="$hasError eq true">
+						{$message}
+					<else/>
+					<div class="col-md-6">
+						<div class="product-title margin-bottom">
+							<h4>介紹</h4>
+						</div>
+						<div class="product-description">
+							<h4>{$product.title|default='未知'}</h3>
+							{$product.content|default=''}
+						</div>
+						<div class="product-pic">
+							<div class="product-pic-max">
+								<img src="{$product.linkurl}"/>
+							</div>
+
+							<div class="product-pic-min row">
+								<eq name="hasMore" value="true">
+								<span id="pre-page" class="pull-left" data-id="1"><i class="glyphicon glyphicon-chevron-left"></i></span>
+								</eq>
+								<foreach name="productPhotolinks" item="productPhotolink" key="k">
+								<div data-index="{$k+1}"><img src="{$productPhotolink.linkurl}" alt="{$productPhotolink.title}"></div>
+								</foreach>
+								<eq name="hasMore" value="true">
+								<span id="next-page" class="pull-right" data-id="0"><i class="glyphicon glyphicon-chevron-right"></i></span>
+								</eq>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="product-title margin-bottom">
+							<h4>參數</h4>
+						</div>
+						<div class="product-parameters">
+							{$product.specialty|default=''}
+						</div>
+					</div>
+					<!-- /.col-md-6 -->
+					</if>
+				</div>
+				<!-- /.row -->
+				<div class="col-md-12 text-right" style="margin-top:10px">
+					快速链接---&gt;
+					<foreach name="products" item="product">
+						<a href="{:C('product_detail_url')}&id={$product.id}" target="_self">{$product.short_title}</a>&nbsp;&nbsp;
+					</foreach>
+					
+				</div>
+				
+				<div class="col-md-12 text-right" style="margin-top:10px"><a href="{:C('product_url')}">返回</a></div>
+			</div>
+		</div>
+
+		<include file="Common/footer"/>
+	</body>
+
+</html>

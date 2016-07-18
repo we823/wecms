@@ -1,0 +1,107 @@
+<include file="Common/header" title="產品中心"/>
+	</head>
+
+	<body>
+		<header class="header">
+			<div class="container">
+				<div class="row">
+					<!--logo-->
+					<div class="col-md-4">
+						<img src="{:C('skin_path')}/img/nav_img/nab-Logo_218x74.jpg" />
+					</div>
+					<!--logo end-->
+
+					<!--nav-->
+					<nav class="col-md-5">
+						<ul class="nav nav-pills">
+							<li><a href="{:C('index_url')}">首頁</a></li>
+							<li><a href="{:C('aboutus_url')}">關於我們</a></li>
+							<li><a href="{:C('news_url')}">新聞中心</a></li>
+							<li><a class="active" href="#">產品中心</a></li>
+							<li><a href="{:C('contactus_url')}">聯繫我們</a></li>
+						</ul>
+					</nav>
+					<!--nav end-->
+
+					<div class="col-md-3">
+						<div class="col-md-8 no-padding">
+							<img class="" src="{:C('skin_path')}/img/nav_img/nav_right-top-185x24.png" />
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search for...">
+								<span class="input-group-btn">
+							        <button class="btn btn-default" type="button">
+							       		<i class="glyphicon glyphicon-search"></i>
+							        </button>
+							    </span>
+							</div>
+							<!-- /input-group -->
+						</div>
+						<div class="col-md-4 add-us">
+							<a href="#"><img src="{:C('skin_path')}/img/home/shoucang.png" /></a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</header>
+
+		<div class="banner banner-product">
+			<div class="container">
+				<div class="row">
+					<div class="pull-left">
+						<span>產品中心</span>
+					</div>
+					<img class="pull-right" src="{:C('skin_path')}/img/products/p_topimg-left_295x111.png" />
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2 col-sm-2">
+					<div class="bottom-line">
+						<h3>目錄</h3>
+					</div>
+					<ul class="product-nav">
+						<empty name="products">
+							<li>无产品信息</li>
+						<else/>
+						    <foreach name="products" item="product">
+						    	<li>
+						    		<a href="{:C('product_detail_url')}&id={$product.id|default=0}">{$product.short_title|default='未知'}</a>
+						    	</li>
+						    </foreach>
+						</empty>
+					</ul>
+				</div>
+				
+				<div class="col-md-10 col-sm-10 padding-top">
+					<div class="row">
+						<empty name="products">
+							<div>暂时无相关产品</div>
+						<else/>
+						    <foreach name="products" item="product">
+						    	<div class="product-showcase col-md-4 text-center" style="height: 290px">
+									<a href="{:C('product_detail_url')}&id={$product.id}" target="_blank" title="{$product.title|default='查看内容'}">
+										<img src="{$product.linkurl|default='#'}" alt="{$product.title|default='产品效果图'}">
+									</a>
+									<a href="{:C('product_detail_url')}&id={$product.id}" target="_blank" title="{$product.title|default='查看内容'}">{$product.title|default='未知'}</a>
+								</div>
+						    </foreach>
+						</empty>
+				     </div>
+				     
+					 <div class="row download-bg clearfix">
+						<a class="pull-right" href="#">资料下载</a>
+					 </div>
+					 
+				</div>
+				
+			</div>
+			
+		</div>
+
+		<include file="Common/footer"/>
+	</body>
+
+</html>

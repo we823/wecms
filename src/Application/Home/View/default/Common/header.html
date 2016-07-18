@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title><if condition="isset($hasTitle) and $hasTitle">{$title} - </if>{$webConfig.webname|default=$webname}</title>
+		
+		<meta name="keywords" content="{$webConfig.keywords|default=''}">
+		<meta name="description" content="{$webConfig.description|default=''}">
+		
+		<link rel="stylesheet" href="{:C('base')}/static/asset/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="{:C('skin_path')}/css/main.css">
+		

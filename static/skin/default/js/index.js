@@ -82,7 +82,7 @@ function newsDetail(){
 		var $this = $(this);
 		var id = $this.attr('data-id');
 		if(id && id>0){
-			var url = 'index.php?c=get_news';
+			var url = 'index.php?m=home&c=index&a=get_news';
 			$.get(url, {id:id}, function(result){
 				if(result){
 
