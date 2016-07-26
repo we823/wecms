@@ -27,6 +27,13 @@
 				</div>
 			</div>
 		</footer>
-		
-<script src="{:C('base')}/static/asset/jquery/jquery-2.2.4.min.js"></script>
-<script src="{:C('skin_path')}/js/index.js"></script>
+
+	<script>var path='asset/jquery/3.1.0/jquery_cmd.min'</script>
+<!--[if lte IE 8]>
+	<script>var path='asset/jquery/1.12.4/jquery_cmd.min'</script>
+<![endif]-->
+<script>
+	var skinName = '{:C('skin_name')}';
+</script>
+<script src="{:C('base')}/static/sea.js"></script>
+<script src="{:C('skin_path')}/js/config.js"></script>

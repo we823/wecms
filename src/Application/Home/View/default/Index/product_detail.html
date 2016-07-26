@@ -113,6 +113,11 @@
 		</div>
 
 		<include file="Common/footer"/>
+		<script>
+			seajs.use('skin/'+skinName+'/js/product_photos', function(product_photos){
+				product_photos.run();
+			});
+		</script>
 	</body>
 
 </html>

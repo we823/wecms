@@ -1,0 +1,12 @@
+$(function() {
+	
+	newsDetail();
+	
+	
+});
+
+
+
+function newsDetail(){
+	
+}

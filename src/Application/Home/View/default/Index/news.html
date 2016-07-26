@@ -91,6 +91,11 @@
 		</div>
 
 		<include file="Common/footer"/>
+		<script>
+			seajs.use('skin/'+skinName+'/js/news', function(news){
+				news.newsDetail();
+			});
+		</script>
 	</body>
 
 </html>
