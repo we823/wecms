@@ -43,8 +43,7 @@
 	   'hasError'=>$hasError,
 	   'message'=>$message,
 	   'url'=>$url,
-	   'username'=>$username,
-	   'p'=>$passwd
+	   'username'=>$username
 	);
 	
 	jsonHeader();
