@@ -18,17 +18,19 @@
 				$message = '用户名或密码不能为空';
 				$hasError = true;
 			}
+			
 			$user = null;
 			if(!$hasError){
-				$User = M('User');
-				$user = $User->where('username='.$username.' and passwd='.md5($passwd))->select();
+				$User = M('Manager');
+				$passwd = md5($passwd);
+				$user = $User->where("username='$username' and passwd='$passwd'")->select();
 				if(is_null($user) || count($user)==0){
 					$message = '用户名或密码错误';
 					$hasError = true;
 				}
 			}
 			
-			if($hasError){
+			if(!$hasError){
 				$user = $user[0];
 	
 				$_SESSION['loging'] = 1;
