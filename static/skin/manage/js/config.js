@@ -1,8 +1,8 @@
 seajs.config({
 	alias: {
 		'jquery': jqueryPath,
-		'bootstrap': 'asset/bootstrap/3.3.7/js/bootstrap.min',
-		'adminlte':'asset/adminlte/2.3.5/js/app.min',
+		'bootstrap': 'asset/bootstrap/3.3.7/js/bootstrap_cmd.min',
+		'adminlte':'asset/adminlte/2.3.5/js/app_cmd.min',
 		'webuploader': 'asset/webuploader/webuploader',
 		'validate':'asset/validate/1.15.1/jquery.validate.min',
 		'validate-additional':'asset/validate/1.15.1/additional-methods.min',
@@ -12,11 +12,15 @@ seajs.config({
 		'ionicon-css':'asset/ionicons/2.0.1/css/ionicons.min.css',
 		'icheck-css':'asset/iCheck/square/blue.css'
 	},
-	preload:['jquery']
+	preload:['jquery','bootstrap','adminlte']
 });
 
 var company = "上海臺蓬機械電子科技有限公司";
 
 function loadCss(require){
 	require.async(['font-awesome-css','ionicon-css', 'icheck-css']);
+}
+
+function loadJs(require){
+	
 }
