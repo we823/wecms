@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>User PreEdit</title>
+        {include file="../base_css.html"}
+        
+	</head>
+	<body class="no-skin">
+		<div class="container-fluid">
+			<div class="row">
+			  <div class="breadcrumbs">
+				<ul class="breadcrumb">
+					<li><i class="ace-icon fa fa-home home-icon"></i>首页</li>
+					<li>用户</li>
+					<li class="active">修改</li>
+				</ul>
+				  <!-- /.breadcrumb -->
+			  </div>
+			  <!-- /.breadcrumbs -->
+			</div>
+			<!-- /.row -->
+			<div class="row">
+				<div class="page-content">
+					<div class="page-header">
+						<h1>用户添加</h1>
+					</div>
+					<div class="row">
+						<div class="col-xd-12">
+						    <form action="?m=manage&c=user&a=edit" method="post" class="form-horizontal" role="form" id="form-data">
+						    	<div class="form-group">
+									<label class="col-sm-2 control-label no-padding-right" for="title"> 用户名  </label>
+									<div class="col-sm-10">
+                                    	<input type="hidden" value="{$user.id}">
+										<input type="text" id="username" name="username" placeholder="用户名" class="col-xs-10 col-sm-5" value="{$user.username}" />
+									</div>
+								</div>
+                                <div class="form-group">
+									<label class="col-sm-2 control-label no-padding-right" for="en_title"> 输入新密码 </label>
+									<div class="col-sm-10">
+										<input type="password" id="passwd" name="passwd" placeholder="密码" class="col-xs-10 col-sm-5" />
+                                        如不需修改密码，请留空
+									</div>
+								</div>
+								<div class="space-4"></div>
+								
+								<div class="form-group">
+									<label class="col-sm-2 control-label no-padding-right"> 添加时间 </label>
+									<div class="col-sm-2">
+										<input type="text" name="addtime" value="<%=addtime%>">
+									</div>
+                                    
+                                    <label class="col-sm-2 control-label no-padding-right"> 修改时间 </label>
+									<div class="col-sm-2">
+										<input type="text" name="edittime" value="<%=Now()%>">
+									</div>
+								</div>
+								
+								<div style="display:none">
+									<input type="hidden" id="logins" name="logins" value="<%=logins%>">
+								</div>
+								<div class="clearfix form-actions">
+									<div class="col-sm-offset-2 col-sm-4">
+										<button type="reset" class="btn">
+											<i class="ace-icon fa fa-undo bigger-110"></i>
+											重置
+										</button>
+										&nbsp;&nbsp;
+										<button type="submit" class="btn btn-info">
+											<i class="ace-icon fa fa-check bigger-110"></i>
+											提交
+										</button>
+									</div>
+								</div>
+						    </form>
+					    </div>
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.page-content -->
+			</div>
+		</div>
+		{include file="../base_js.html"}
+		<script>
+			$(document).ready(function(){
+				root.user.manage.valiatorEdit();
+			});
+		</script>
+		
+	</body>
+</html>

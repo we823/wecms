@@ -16,7 +16,7 @@
   	<div class="wrapper">
   		
   		 <header class="main-header">
-  		 	  <a href="{:C('manage_url')}" class="logo">
+  		 	  <a href="{:U(C('manage_url'))}" class="logo">
   		 	  	<span class="logo-mini"><b>We</b>CMS</span>
   		 	  	<span class="logo-lg"><b>We</b> CMS</span>
   		 	  </a>
@@ -117,12 +117,12 @@
 				          </a>
 				          <ul class="treeview-menu">
 				          	  <li>
-				          	  	<a href="index.php?m=manage&c=news&a=preAdd">
+				          	  	<a href="{:U('manage/news/preAdd')}">
 				          	  		<i class="fa fa-plus"></i> 新闻添加
 				          	  	</a>
 				          	  </li>
 				          	  <li>
-				          	  	<a href="index.php?m=manage&c=news&a=list">
+				          	  	<a href="{:U('manage/news/list')}">
 				          	  		<i class="fa fa-plus"></i> 新闻列表
 				          	  	</a>
 				          	  </li>
@@ -138,12 +138,12 @@
 				          </a>
 				          <ul class="treeview-menu">
 				          	  <li>
-				          	  	<a href="index.php?m=manage&c=product&a=preAdd">
+				          	  	<a href="{:U('manage/product/preAdd')}">
 				          	  		<i class="fa fa-plus"></i> 产品添加
 				          	  	</a>
 				          	  </li>
 				          	  <li>
-				          	  	<a href="index.php?m=manage&c=product&a=list">
+				          	  	<a href="{:U('manage/product/list')}">
 				          	  		<i class="fa fa-plus"></i> 产品列表
 				          	  	</a>
 				          	  </li>
@@ -159,12 +159,12 @@
 				          </a>
 				          <ul class="treeview-menu">
 				          	  <li>
-				          	  	<a href="index.php?m=manage&c=user&a=preAdd">
+				          	  	<a href="{:U('manage/user/preAdd')}">
 				          	  		<i class="fa fa-plus"></i> 用户添加
 				          	  	</a>
 				          	  </li>
 				          	  <li>
-				          	  	<a href="index.php?m=manage&c=user&a=list">
+				          	  	<a href="{:U('manage/user/list')}">
 				          	  		<i class="fa fa-plus"></i> 用户列表
 				          	  	</a>
 				          	  </li>
@@ -205,7 +205,7 @@
     	});
 		
 			function logout(){
-				location.href="?m=manage&c=logout";	
+				location.href="{:U('manage/index/logout')}";	
 			}
     </script>
   </body>
