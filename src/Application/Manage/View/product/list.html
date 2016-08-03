@@ -1,42 +1,28 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Product List</title>
-        
-	    {include file="../base_css.html"}
-        
-	</head>
-	<body class="no-skin">
-		<div class="container-fluid">
-			<div class="row">
-			  <div class="breadcrumbs">
-				<ul class="breadcrumb">
-					<li><i class="ace-icon fa fa-home home-icon"></i>首页</li>
-					<li><a href="{$listUrl}">产品</a></li>
-					<li class="active">列表</li>
-				</ul>
-				  <!-- /.breadcrumb -->
-			  </div>
-			  <!-- /.breadcrumbs -->
-			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="col-md-12">
-					
-					<table id="gridTable"></table>
-					<div id="gridPager"></div>
-				</div>
-			</div>
-		</div>
-		{include file="../base_js.html"}
-		
-        <script src="static/skin/manage/js/product.js"></script>
-		<script>
-			$(document).ready(function(){
-				root.product.manage.initGrid();
-			});
-			
-		</script>
-	</body>
-</html>
+  <section class="content-header">
+  	 <h1>产品管理</h1>
+  	 <ul class="breadcrumb">
+			<li><i class="fa fa-home home-icon"></i> <a href="{:U(C('manage_url'))}">首页</a></li>
+			<li><a href="{$listUrl}">产品</a></li>
+			<li class="active">列表</li>
+		</ul>
+  </section>
+  
+  <section class="content">
+  	<div class="box">
+  		<div class="box-header">
+  			 <button class="btn btn-primary">新增</button>
+  		</div>
+  		<div class="box-body">
+  			  <table id="data-table" class="display col-md-12" cellspacing="0"></table>
+  		</div>
+  		<div class="box-footer">
+  			
+  		</div>
+  	</div>
+  </section>
+  
+<script>
+	seajs.use('skin/manage/js/product', function(product){
+		product.initTable("{:U('manage/product/getJson')}");
+	});
+</script>

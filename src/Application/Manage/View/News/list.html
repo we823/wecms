@@ -1,46 +1,33 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>News List</title>
-        
-	    {include file="../base_css.html"}
-        
-	</head>
-	<body class="no-skin">
-		<div class="container-fluid">
-			<div class="row">
-			  <div class="breadcrumbs">
-				<ul class="breadcrumb">
-					<li><i class="ace-icon fa fa-home home-icon"></i>首页</li>
-					<li><a href="{$listUrl}">新闻</a></li>
-					<li class="active">列表</li>
-				</ul>
-				  <!-- /.breadcrumb -->
-			  </div>
-			  <!-- /.breadcrumbs -->
-			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="col-md-12">
-					
-					<table id="gridTable"></table>
-					<div id="gridPager"></div>
-				</div>
-			</div>
-		</div>
-		{include file="../base_js.html"}
-		
-		<script src="static/asset/jquery-ui/1.11.1/jquery-ui.min.js"></script>
-		<script src="static/asset/jqGrid/4.6.0/js/i18n/grid.locale-cn.js"></script>
-		<script src="static/asset/jqGrid/4.6.0/js/jquery.jqGrid.min.js"></script>
-		<script src="static/skin/manage/js/custom-jqgrid.js"></script>
-        <script src="static/skin/manage/js/base.js"></script>
-		<script>
-			$(document).ready(function(){
-				root.news.manage.initGrid();
-			});
-			
-		</script>
-	</body>
-</html>
+  <script>
+  	seajs.use('skin/manage/js/news.js',function(news){
+  		 news.initTable('{:U('manage/news/getJson')}', '{:U('manage/news/preEdit')}');
+  		 news.initAddModal();
+  	});
+  </script>
+  <section class="content-header">
+  	 <h1>新闻管理</h1>
+  	 <ul class="breadcrumb">
+			<li><i class="fa fa-home home-icon"></i> <a href="{:U(C('manage_url'))}">首页</a></li>
+			<li><a href="{$listUrl}">新闻</a></li>
+			<li class="active">列表</li>
+		</ul>
+  </section>
+  
+  <section class="content">
+  	<div class="box">
+  		<div class="box-header">
+  			 <a href="#" class="btn btn-primary btn-sm btn-content-add" data-toggle="modal" data-target="#content-modal" data-url="{:U('manage/news/preAdd')}" data-title="新闻新增"><i class="fa fa-plus"></i> 新增新闻</a>
+  			 <div class="col-md-4 pull-right text-right">
+  			 	  <label>搜索：</label><input type="text" name="keyword">
+  			 </div>
+  		</div>
+  		<div class="box-body">
+  			  <table id="data-table" class="table table-striped table-bordered col-md-12" cellspacing="0"></table>
+  		</div>
+  		<div class="box-footer">
+  			
+  		</div>
+  	</div>
+  </section>
+  
+<include file="Common/modal-lg"/>

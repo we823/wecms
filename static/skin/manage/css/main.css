@@ -2,3 +2,10 @@
 	color:#F00;	
 }
 
+.dataTables_wrapper .dataTables_length{
+	padding-top: 0.755em;
+	margin-left: 10px;
+}
+.dataTables_wrapper .dataTables_length label{
+	font-weight: normal;
+}

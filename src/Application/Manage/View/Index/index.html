@@ -8,7 +8,13 @@
     <title> 后台管理程序</title>
      
 	  <include file="Common/base_css"/>
-   
+    <include file="Common/base_js"/>
+
+    <script>
+    	seajs.use('skin/manage/js/index', function(index){
+    		   index.init();
+    	});
+    </script>
   </head>
   
   <body class="skin-blue sidebar-mini">
@@ -110,46 +116,25 @@
 			      	 <li class="header">主导航</li>
 			      	 <li class="treeview">
 			      	 	  <a href="#">
-				            <i class="fa fa-dashboard"></i> <span>新闻管理</span>
+				            <i class="fa fa-dashboard"></i> <span>内容管理</span>
 				            <span class="pull-right-container">
 				              <i class="fa fa-angle-left pull-right"></i>
 				            </span>
 				          </a>
 				          <ul class="treeview-menu">
 				          	  <li>
-				          	  	<a href="{:U('manage/news/preAdd')}">
-				          	  		<i class="fa fa-plus"></i> 新闻添加
-				          	  	</a>
-				          	  </li>
-				          	  <li>
-				          	  	<a href="{:U('manage/news/list')}">
+				          	  	<a href="javascript:void(0)" class="load-menu-detail" data-url="{:U('manage/news/list')}">
 				          	  		<i class="fa fa-plus"></i> 新闻列表
 				          	  	</a>
 				          	  </li>
-				          </ul>
-			      	 </li>
-			      	 
-			      	 <li class="treeview">
-			      	 	  <a href="#">
-				            <i class="fa fa-dashboard"></i> <span>产品管理</span>
-				            <span class="pull-right-container">
-				              <i class="fa fa-angle-left pull-right"></i>
-				            </span>
-				          </a>
-				          <ul class="treeview-menu">
 				          	  <li>
-				          	  	<a href="{:U('manage/product/preAdd')}">
-				          	  		<i class="fa fa-plus"></i> 产品添加
-				          	  	</a>
-				          	  </li>
-				          	  <li>
-				          	  	<a href="{:U('manage/product/list')}">
+				          	  	<a href="javascript:void(0)" class="load-menu-detail" data-url="{:U('manage/product/list')}">
 				          	  		<i class="fa fa-plus"></i> 产品列表
 				          	  	</a>
 				          	  </li>
 				          </ul>
 			      	 </li>
-			      	 
+
 			      	 <li class="treeview">
 			      	 	  <a href="#">
 				            <i class="fa fa-dashboard"></i> <span>用户管理</span>
@@ -158,11 +143,7 @@
 				            </span>
 				          </a>
 				          <ul class="treeview-menu">
-				          	  <li>
-				          	  	<a href="{:U('manage/user/preAdd')}">
-				          	  		<i class="fa fa-plus"></i> 用户添加
-				          	  	</a>
-				          	  </li>
+
 				          	  <li>
 				          	  	<a href="{:U('manage/user/list')}">
 				          	  		<i class="fa fa-plus"></i> 用户列表
@@ -176,7 +157,7 @@
   		 </aside>
   		 <!-- /.main-sidebar -->
   		 
-  		 <div class="content-wrapper">
+  		 <div id="content-container" class="content-wrapper">
   		 	  <section class="content-header">
   		 	  	
   		 	  </section>
@@ -197,12 +178,7 @@
   	</div>
   	<!-- /.wrapper -->
   
-    <include file="Common/base_js"/>
-
     <script>
-    	seajs.use('skin/manage/js/index', function(index){
-    		   index.init();
-    	});
 		
 			function logout(){
 				location.href="{:U('manage/index/logout')}";	

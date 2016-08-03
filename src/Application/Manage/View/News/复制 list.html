@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>News List</title>
+        
+	    <include file="Common/base_css"/>
+        
+	</head>
+	<body class="no-skin">
+		<div class="container-fluid">
+			<div class="row">
+			  <div class="breadcrumbs">
+				<ul class="breadcrumb">
+					<li><i class="ace-icon fa fa-home home-icon"></i>首页</li>
+					<li><a href="{$listUrl}">新闻</a></li>
+					<li class="active">列表</li>
+				</ul>
+				  <!-- /.breadcrumb -->
+			  </div>
+			  <!-- /.breadcrumbs -->
+			</div>
+			<!-- /.row -->
+			<div class="row">
+				<div class="col-md-12">
+					
+					<table id="gridTable"></table>
+					<div id="gridPager"></div>
+				</div>
+			</div>
+		</div>
+		<include file="Common/base_js"/>
+		
+		<script>
+			$(document).ready(function(){
+				root.news.manage.initGrid();
+			});
+			
+		</script>
+	</body>
+</html>

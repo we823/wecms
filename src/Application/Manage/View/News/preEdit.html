@@ -1,109 +1,81 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>News PreEdit</title>
-		{include file="../base_css.html"}
-        
-	</head>
-	<body class="no-skin">
-		<div class="container-fluid">
-			<div class="row">
-			  <div class="breadcrumbs">
-				<ul class="breadcrumb">
-					<li><i class="ace-icon fa fa-home home-icon"></i><a href="">首页</a></li>
-					<li><a href="{$listUrl}">新闻</a></li>
-					<li class="active">修改</li>
-				</ul>
-				  <!-- /.breadcrumb -->
-			  </div>
-			  <!-- /.breadcrumbs -->
-			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="page-content">
-					<div class="page-header">
-						<h1>新闻修改</h1>
-					</div>
-					<div class="row">
-						<div class="col-xd-12">
-						    <form action="{$editUrl}" method="post" class="form-horizontal" role="form" id="form-data">
-						    	<div class="form-group">
-									<label class="col-sm-2 control-label no-padding-right" for="title"> 标题  </label>
-									<div class="col-sm-10">
-                                        <input type="hidden" name="id" value="{$news.id}">
-										<input type="text" id="title" name="title" placeholder="新闻标题" class="col-xs-10 col-sm-5" value="{$news.title}" />
-									</div>
-								</div>
+	<div class="row">
+		<div class="box">
+			<div class="box-body">
+				<div class="col-xd-12">
+				    <form action="{$editUrl}" method="post" class="form-horizontal" role="form" id="form-data">
+				    	<div class="form-group">
+							<label class="col-sm-2 control-label no-padding-right" for="title"> 标题  </label>
+							<div class="col-sm-10">
+                                <input type="hidden" name="id" value="{$news.id}">
+								<input type="text" id="title" name="title" placeholder="新闻标题" class="col-xs-10 col-sm-5" value="{$news.title}" />
+							</div>
+						</div>
 
-								<div class="space-4"></div>
-																
-								<div class="form-group">
-									<label class="col-sm-2 control-label no-padding-right"> 栏目连接类型 </label>
-									<div class="col-sm-8">
-                                        <label class="radio-inline">
-											<input type="radio" name="linktype" id="linktype_0" value="0" onClick="root.news.manage.openLinkurl(0)" {if $news.linktype eq 0}checked{/if}>内部链接
-										</label>
-										<label class="radio-inline">
-											<input type="radio" name="linktype" id="linktype_1" value="1" onClick="root.news.manage.openLinkurl(1)" {if $news.linktype eq 1}checked{/if}>外部跳转链接
-										</label>
-										<input id="linkurl" name="linkurl" type="text" class="form-control" placeholder="外部跳转地址" value="{$news.linkurl}">
-                                        <div id="upload2"></div>
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label class="col-sm-2 control-label no-padding-right"> 添加时间 </label>
-									<div class="col-sm-2">
-										<input type="text" name="addtime" value="{$news.addtime|date_format:'Y-m-d H:i:s'}">
-									</div>
-                                    
-                                    <label class="col-sm-2 control-label no-padding-right"> 修改时间 </label>
-									<div class="col-sm-2">
-										<input type="text" name="edittime" value="{$smarty.now|date_format:'Y-m-d H:i:s'}">
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label class="col-sm-2 control-label no-padding-right"> 内容 </label>
-									<div class="col-sm-9">
-										<script id="content_container" name="content" type="text/plain">
-										{$news.content}
-										</script>
-									</div>
-								</div>
-                                
-								<div style="display:none">
-									<input type="hidden" id="hits" name="hits" value="{$news.hits}">
-								</div>
-								<div class="clearfix form-actions">
-									<div class="col-sm-offset-2 col-sm-4">
-										<button type="reset" class="btn">
-											<i class="ace-icon fa fa-undo bigger-110"></i>
-											重置
-										</button>
-										&nbsp;&nbsp;
-										<button type="submit" class="btn btn-info">
-											<i class="ace-icon fa fa-check bigger-110"></i>
-											提交
-										</button>
-									</div>
-								</div>
-						    </form>
-					    </div>
-					</div>
-					<!-- /.row -->
-				</div>
-				<!-- /.page-content -->
+						<div class="space-4"></div>
+														
+						<div class="form-group">
+							<label class="col-sm-2 control-label no-padding-right"> 栏目连接类型 </label>
+							<div class="col-sm-8">
+                                <label class="radio-inline">
+									<input type="radio" name="linktype" id="linktype_0" value="0" onClick="root.news.manage.openLinkurl(0)" {if $news.linktype eq 0}checked{/if}>内部链接
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="linktype" id="linktype_1" value="1" onClick="root.news.manage.openLinkurl(1)" {if $news.linktype eq 1}checked{/if}>外部跳转链接
+								</label>
+								<input id="linkurl" name="linkurl" type="text" class="form-control" placeholder="外部跳转地址" value="{$news.linkurl}">
+                                <div id="upload2"></div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label no-padding-right"> 添加时间 </label>
+							<div class="col-sm-2">
+								<input type="text" name="addtime" value="{$news.addtime|date_format='Y-m-d H:i:s'}">
+							</div>
+                            
+                            <label class="col-sm-2 control-label no-padding-right"> 修改时间 </label>
+							<div class="col-sm-2">
+								<input type="text" name="edittime" value="{$smarty.now|date_format='Y-m-d H:i:s'}">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label no-padding-right"> 内容 </label>
+							<div class="col-sm-9">
+								<script id="content_container" name="content" type="text/plain">
+								{$news.content}
+								</script>
+							</div>
+						</div>
+                        
+						<div style="display:none">
+							<input type="hidden" id="hits" name="hits" value="{$news.hits}">
+						</div>
+						<div class="clearfix form-actions">
+							<div class="col-sm-offset-2 col-sm-4">
+								<button type="reset" class="btn">
+									<i class="ace-icon fa fa-undo bigger-110"></i>
+									重置
+								</button>
+								&nbsp;&nbsp;
+								<button type="submit" class="btn btn-info">
+									<i class="ace-icon fa fa-check bigger-110"></i>
+									提交
+								</button>
+							</div>
+						</div>
+				    </form>
+			    </div>
 			</div>
+			<!-- /.box-body -->
 		</div>
-		{include file="../base_js.html"}
+		<!-- /.box -->
+	</div>
+        <!--
 		<script>
 			$(document).ready(function(){
-				root.news.manage.init({$news.linktype});
 				
 				$(":input[name='linktype'][value={$news.linktype}]").attr("checked","true");
 			});
 		</script>
-	</body>
-</html>
+		-->

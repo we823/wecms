@@ -1,18 +1,10 @@
 <?php
 	namespace Manage\Controller;
 	
-	class NewsController extends BaseController{
-		
-		public function preEdit(){
-			$id = I('id');
-			$News = M('News');
-			$news = $News->where('id='.$id)->find();
-			$this->assign('news', $news);
-			$this->display();
-		}
+	class ProductController extends BaseController{
 		
 		public function getJson(){
-			$News = M('News');
+			$Product = M('Product');
 			
 			$start = I('start',0);
 			$length = I('length', 10);
@@ -25,17 +17,18 @@
 			$order = $columns[intval($orderColumn)]['data'].' '.$orderDir;
 			//var_dump($columns[intval($orderColumn)]['orderable']);
             if($columns[intval($orderColumn)]['orderable']){
-            	$newsList = $News->order($order)->limit($start, $start + $length)->select();
+            	$productList = $Product->order($order)->limit($start, $start + $length)->select();
             }else{
-            	$newsList = $News->limit($start, $start + $length)->select();
+            	$productList = $Product->limit($start, $start + $length)->select();
             }
 			
+			$count = $Product->count();
 			$draw = intval(I('draw', 1));
 			
 			$result = array(
-			  'data'=>array_values($newsList),
-			  'recordsFiltered'=>count($newsList),
-			  'recordsTotal'=>count($newsList),
+			  'data'=>array_values($productList),
+			  'recordsFiltered'=>$count,
+			  'recordsTotal'=>count($productList),
 			  'draw'=>$draw
 			);
 			
