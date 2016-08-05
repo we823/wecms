@@ -2,6 +2,7 @@
   	seajs.use('skin/manage/js/news.js',function(news){
   		 news.initTable('{:U('manage/news/getJson')}', '{:U('manage/news/preEdit')}');
   		 news.initAddModal();
+  		 news.delNews('{:U('manage/news/delete')}');
   	});
   </script>
   <section class="content-header">

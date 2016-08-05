@@ -6,15 +6,16 @@ define(function(require, exports, module){
 	var common = require('common'),
 	    custom_datatables = require('custom_datatables');
 	require('colResizable');
-    
+	var dt;
 	exports.initTable = function(url, editUrl){
-		$('#data-table').DataTable({
+		dt = $('#data-table').DataTable({
 			'dom':'t<"bottom"ilp<"clear">>',
 			'pagingType':'full_numbers',
 			'processing':true,
 			'serverSide':true,
 			'ajax': url,
 			'rowId': 'id',
+			'order': [[3, 'desc']],
 			'columns':[
 			   {
 			   	'data':'id',
@@ -58,6 +59,7 @@ define(function(require, exports, module){
 	};
 	
 	exports.initAddModal = function(){
+		
 		$('#content-modal').on('shown.bs.modal', function(event){
 			var source = $(event.relatedTarget);
 			var $this = $(this);
@@ -65,6 +67,86 @@ define(function(require, exports, module){
 			    title = source.attr('data-title');
             $this.find('.modal-title').html(title);
 			$this.find('.modal-body').load(url);
+
+		});
+		
+	};
+	
+	exports.changeLinkurl = function(){
+		$('input[name=linktype]').on('click', function(){
+			var type = $(this).val();
+			if(type==0){
+				$('#linkurl').hide();
+			}else{
+				$('#linkurl').show();
+			}
+		});
+		
+		$('#linkurl').hide();
+	};
+	
+	exports.initEditor = function(){
+		UE.getEditor('content_container',{
+			width: '500px',
+			height: '200px'
 		});
 	};
+	
+	exports.addForm = function(editUrl){
+		require('validate');
+		$('#add-form-data').validate({
+			submitHandler: function(form){
+				var $form = $(form),
+				    action = $form.attr('action'),
+				    data = $form.serializeArray();
+				$.post(action, data, function(result){
+					if(result){
+						if(result.hasError){
+							alert(result.messsage);
+							return false;
+						}else{
+
+							$('#content-modal').modal('hide');
+							if(dt){
+
+								dt.ajax.reload();
+								var tableEdits = $('#data-table .table-edit');
+								if(tableEdits){
+									$.each(tableEdits, function(index,tableEdit){
+										var $tableEdit = $(tableEdit),
+										    id = $tableEdit.attr('data-id');
+										$tableEdit.attr('data-toggle', 'modal').attr('data-target','#content-modal');
+										$tableEdit.attr('data-title','新闻修改').attr('data-url',editUrl+'?id='+id);
+									} );
+								}
+							}
+							return false;
+						}
+					}
+				});
+				return false;
+			}
+		});
+	};
+	
+	exports.delNews = function(delUrl){
+		$('#data-table').on('click', '.table-del', function(){
+			if(confirm('确定要删除此条新闻吗？')){
+				var $this = $(this),
+			    id = $this.attr('data-id');
+				$.post(delUrl, {id: id}, function(result){
+					if(result){
+						if(result.hasError){
+							alert(result.message);
+						}else{
+							if(dt){
+								dt.ajax.reload();
+							}
+						}
+					}
+				});
+			}
+			
+		});
+	}; // delNews
 });

@@ -22,7 +22,9 @@ seajs.config({
 		
 		'colResizable':'asset/colresizable/colResizable-1.6.min',
 		'common':'common/common',
-		'custom_datatables':'common/custom_datatables'
+		'custom_datatables':'common/custom_datatables',
+		
+		'ueditor':'ueditor/ueditor.all.min'
 	},
 	preload:['jquery','bootstrap','adminlte']
 });

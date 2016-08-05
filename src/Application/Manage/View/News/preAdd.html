@@ -2,11 +2,11 @@
 	<div class="box">
 		<div class="box-body">
 			<div class="col-md-12 col-xd-12">
-				<form action="{$addUrl}" method="post" class="form-horizontal" role="form" id="form-data">
+				<form action="{:U('manage/news/add')}" method="post" class="form-horizontal" role="form" id="add-form-data">
 					<div class="form-group">
 						<label class="col-sm-2 control-label no-padding-right" for="title"> 标题  </label>
 						<div class="col-sm-10">
-							<input type="text" id="title" name="title" placeholder="新闻标题" class="form-control" />
+							<input type="text" id="title" name="title" placeholder="新闻标题" class="form-control" required="required" data-msg-required="请输入新闻标题">
 						</div>
 					</div>
 
@@ -16,10 +16,10 @@
 						<label class="col-sm-2 control-label no-padding-right"> 栏目连接类型 </label>
 						<div class="col-sm-8">
 							<label class="radio-inline">
-								<input type="radio" name="linktype" id="linktype_0" value="0" onClick="root.news.manage.openLinkurl(0)" checked>内部链接
+								<input type="radio" name="linktype" id="linktype_0" value="0" checked>内部链接
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="linktype" id="linktype_1" value="1" onClick="root.news.manage.openLinkurl(1)">外部跳转链接
+								<input type="radio" name="linktype" id="linktype_1" value="1">外部跳转链接
 							</label>
 							<input id="linkurl" name="linkurl" type="text" class="form-control" placeholder="外部跳转地址">
 							<div id="upload2"></div>
@@ -28,15 +28,15 @@
 
 					<div class="form-group">
 						<label class="col-sm-2 control-label no-padding-right"> 添加时间 </label>
-						<div class="col-sm-2">
-							<input type="datetime" name="addtime" value="" class="form-control">
+						<div class="col-sm-4">
+							<input type="datetime" name="addtime" value="{$Think.now|date='Y-m-d H:i:s',time(###)}" class="form-control">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-sm-2 control-label no-padding-right"> 内容 </label>
 						<div class="col-sm-9">
-							<textarea id="content_container" name="content" rows="5" class="form-control"></textarea>
+							<textarea id="content_container" name="content" rows="5"></textarea>
 						</div>
 					</div>
 
@@ -62,3 +62,15 @@
 	</div>
 	<!-- /.page-content -->
 </div>
+<script>
+	window.UEDITOR_HOME_URL = '{:C('base')}/ueditor/';
+</script>
+<script src="{:C('base')}/ueditor/ueditor.config.js"></script>
+<script src="{:C('base')}/ueditor/ueditor.all.js"></script>
+<script>
+	seajs.use('skin/manage/js/news', function(news){
+		news.changeLinkurl();
+		news.initEditor();
+		news.addForm("{:U('manage/news/preEdit')}");
+	});
+</script>

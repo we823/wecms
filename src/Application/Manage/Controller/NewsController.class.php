@@ -2,13 +2,57 @@
 	namespace Manage\Controller;
 	
 	class NewsController extends BaseController{
-		
+		public function add(){
+			$News = M('News');
+			$News->create();
+			$id = $News->add();
+			
+			$hasError = false;
+			$message = '无错误';
+			if($id<=0){
+				$hasError = true;
+				$message = '新增新闻发生错误';
+			}
+			
+			$result = array(
+			  'hasError'=>$hasError,
+			  'message'=>$message
+			);
+			
+			echo json_encode($result);
+		}
 		public function preEdit(){
 			$id = I('id');
 			$News = M('News');
 			$news = $News->where('id='.$id)->find();
 			$this->assign('news', $news);
 			$this->display();
+		}
+		
+		public function delete(){
+			$id = I('id');
+			$hasError = false;
+			$message = '';
+			if(is_numeric($id)){
+				$News = M('News');
+				$row = $News->delete($id);
+				if($row>0){
+					$message = "删除成功";
+				}else{
+					$hasError = true;
+					$message = '删除记录号：'.$id.'未成功';
+				}
+			}else{
+				$hasError = true;
+				$message = '主键不正确，无法删除';
+			}
+			
+			$result = array(
+			   'hasError'=>$hasError,
+			   'message'=>$message
+			);
+			
+			echo json_encode($result);
 		}
 		
 		public function getJson(){

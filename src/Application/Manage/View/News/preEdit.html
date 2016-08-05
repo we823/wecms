@@ -2,7 +2,7 @@
 		<div class="box">
 			<div class="box-body">
 				<div class="col-xd-12">
-				    <form action="{$editUrl}" method="post" class="form-horizontal" role="form" id="form-data">
+				    <form action="{:U('manage/news/edit')}" method="post" class="form-horizontal" role="form" id="edit-form-data">
 				    	<div class="form-group">
 							<label class="col-sm-2 control-label no-padding-right" for="title"> 标题  </label>
 							<div class="col-sm-10">
@@ -71,11 +71,12 @@
 		</div>
 		<!-- /.box -->
 	</div>
-        <!--
+        
 		<script>
-			$(document).ready(function(){
-				
-				$(":input[name='linktype'][value={$news.linktype}]").attr("checked","true");
-			});
+			$(":input[name='linktype'][value={$news.linktype}]").attr("checked","true");
 		</script>
-		-->
+<script>
+	seajs.use('skin/manage/js/news', function(news){
+		news.initEditor();
+	});
+</script>		
