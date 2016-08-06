@@ -35,7 +35,7 @@ define(function(require, exports, module){
 		        //   指定第4列，从0开始，0表示第一列，1表示第二列……
 		        targets: 4,
 		        render: function(data, type, row, meta) {
-		            return custom_datatables.getEditButtons(row.id);
+		            return custom_datatables.getEditButtons('#content-modal', editUrl, row.id);
 		        }
 		    }],
 			"language": custom_datatables.dataTables_cn(),
@@ -44,16 +44,6 @@ define(function(require, exports, module){
 				$('#data-table').colResizable({
 					liveDrag:true
 				});
-				
-				var tableEdits = $('#data-table .table-edit');
-				if(tableEdits){
-					$.each(tableEdits, function(index,tableEdit){
-						var $tableEdit = $(tableEdit),
-						    id = $tableEdit.attr('data-id');
-						$tableEdit.attr('data-toggle', 'modal').attr('data-target','#content-modal');
-						$tableEdit.attr('data-title','新闻修改').attr('data-url',editUrl+'?id='+id);
-					} );
-				}
 			}
 		});
 	};
@@ -72,7 +62,7 @@ define(function(require, exports, module){
 		
 	};
 	
-	exports.changeLinkurl = function(){
+	exports.changeLinkurl = function(linktype){
 		$('input[name=linktype]').on('click', function(){
 			var type = $(this).val();
 			if(type==0){
@@ -81,8 +71,16 @@ define(function(require, exports, module){
 				$('#linkurl').show();
 			}
 		});
+		if(linktype){
+			if(linktype==0){
+				$('#linkurl').hide();
+			}else{
+				$('#linkurl').show();
+			}
+		}else{
+			$('#linkurl').hide();
+		}
 		
-		$('#linkurl').hide();
 	};
 	
 	exports.initEditor = function(){
@@ -104,24 +102,39 @@ define(function(require, exports, module){
 						if(result.hasError){
 							alert(result.messsage);
 							return false;
-						}else{
+						}
 
-							$('#content-modal').modal('hide');
-							if(dt){
-
-								dt.ajax.reload();
-								var tableEdits = $('#data-table .table-edit');
-								if(tableEdits){
-									$.each(tableEdits, function(index,tableEdit){
-										var $tableEdit = $(tableEdit),
-										    id = $tableEdit.attr('data-id');
-										$tableEdit.attr('data-toggle', 'modal').attr('data-target','#content-modal');
-										$tableEdit.attr('data-title','新闻修改').attr('data-url',editUrl+'?id='+id);
-									} );
-								}
-							}
+						$('#content-modal').modal('hide');
+						if(dt){
+							dt.ajax.reload();
+						}
+						return false;
+					}
+				});
+				return false;
+			}
+		});
+	};
+	
+	exports.editForm = function(){
+		require('validate');
+		$('#edit-form-data').validate({
+			submitHandler: function(form){
+				var $form = $(form),
+				    action = $form.attr('action'),
+				    data = $form.serializeArray();
+				$.post(action, data, function(result){
+					if(result){
+						if(result.hasError){
+							alert(result.messsage);
 							return false;
 						}
+
+						$('#content-modal').modal('hide');
+						if(dt){
+							dt.ajax.reload();
+						}
+						return false;
 					}
 				});
 				return false;

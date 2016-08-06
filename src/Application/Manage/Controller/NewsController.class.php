@@ -29,6 +29,31 @@
 			$this->display();
 		}
 		
+		public function edit(){
+			$News = M('News');
+			$News->create();
+			$id = I('id');
+			
+			$hasError = false;
+			$message = '新闻更新成功';
+			if(is_null($id) || !is_numeric($id)){
+				$hasError = true;
+				$message = '新闻ID错误, 无法更新';
+			}else{
+				$updateCount = $News->where('id='.$id)->save();
+				if($updateCount===false){
+					$hasError = true;
+				    $message = '新闻更新失败';
+				}
+			}
+			
+			$result = array(
+			  'hasError'=>$hasError,
+			  'message'=>$message
+			);
+			
+			echo json_encode($result);
+		}
 		public function delete(){
 			$id = I('id');
 			$hasError = false;

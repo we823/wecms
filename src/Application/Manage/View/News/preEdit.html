@@ -17,10 +17,10 @@
 							<label class="col-sm-2 control-label no-padding-right"> 栏目连接类型 </label>
 							<div class="col-sm-8">
                                 <label class="radio-inline">
-									<input type="radio" name="linktype" id="linktype_0" value="0" onClick="root.news.manage.openLinkurl(0)" {if $news.linktype eq 0}checked{/if}>内部链接
+									<input type="radio" name="linktype" id="linktype_0" value="0" {if $news.linktype eq 0}checked{/if}>内部链接
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="linktype" id="linktype_1" value="1" onClick="root.news.manage.openLinkurl(1)" {if $news.linktype eq 1}checked{/if}>外部跳转链接
+									<input type="radio" name="linktype" id="linktype_1" value="1" {if $news.linktype eq 1}checked{/if}>外部跳转链接
 								</label>
 								<input id="linkurl" name="linkurl" type="text" class="form-control" placeholder="外部跳转地址" value="{$news.linkurl}">
                                 <div id="upload2"></div>
@@ -30,21 +30,21 @@
 						<div class="form-group">
 							<label class="col-sm-2 control-label no-padding-right"> 添加时间 </label>
 							<div class="col-sm-2">
-								<input type="text" name="addtime" value="{$news.addtime|date_format='Y-m-d H:i:s'}">
+								<input type="text" name="addtime" value="{$news.addtime}">
 							</div>
                             
                             <label class="col-sm-2 control-label no-padding-right"> 修改时间 </label>
 							<div class="col-sm-2">
-								<input type="text" name="edittime" value="{$smarty.now|date_format='Y-m-d H:i:s'}">
+								<input type="text" name="edittime" value="{$Think.now|date='Y-m-d H:i:s',time(###)}">
 							</div>
 						</div>
 						
 						<div class="form-group">
 							<label class="col-sm-2 control-label no-padding-right"> 内容 </label>
 							<div class="col-sm-9">
-								<script id="content_container" name="content" type="text/plain">
+								<textarea id="content_container" name="content">
 								{$news.content}
-								</script>
+								</textarea>
 							</div>
 						</div>
                         
@@ -71,12 +71,18 @@
 		</div>
 		<!-- /.box -->
 	</div>
-        
-		<script>
-			$(":input[name='linktype'][value={$news.linktype}]").attr("checked","true");
-		</script>
+<script>
+	window.UEDITOR_HOME_URL = '{:C('base')}/ueditor/';
+</script>
+<script src="{:C('base')}/ueditor/ueditor.config.js"></script>
+<script src="{:C('base')}/ueditor/ueditor.all.js"></script>        
+<script>
+	$(":input[name='linktype'][value={$news.linktype}]").attr("checked","true");
+</script>
 <script>
 	seajs.use('skin/manage/js/news', function(news){
+		news.changeLinkurl({$news.linktype});
 		news.initEditor();
+		news.editForm();
 	});
 </script>		
