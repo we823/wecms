@@ -24,7 +24,7 @@ seajs.config({
 		'common':'common/common',
 		'custom_datatables':'common/custom_datatables',
 		
-		'ueditor':'ueditor/ueditor.all.min'
+		'laytpl':'asset/layer/laytpl'
 	},
 	preload:['jquery','bootstrap','adminlte']
 });

@@ -11,4 +11,13 @@
 		public function add(){
 			
 		}
+		
+		public function jsonResult($message='结果无异常', $hasError=false){
+			$result = array(
+			   'message'=>$message,
+			   'hasError'=>$hasError
+			);
+			
+			$this->ajaxReturn($result);
+		}
 	}

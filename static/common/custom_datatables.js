@@ -26,9 +26,9 @@ define(function(require, exports, module){
 		};
 	};
 	
-	exports.getEditButtons = function(modalName, editUrl, id){
-		var $buttons = '<a href="#" data-id="'+id+'" data-toggle="modal" data-target="'+ modalName +'" data-url="'+editUrl+'?id='+id+'" data-title="新闻修改" class="table-edit btn btn-primary btn-sm"><i class="fa fa-pencil"></i> 编辑</a>'
-		              +'  <a href="#" data-id="'+id+'" class="table-del btn btn-danger btn-sm"><i class="fa fa-remove"></i> 删除</a>';
+	exports.getEditButtons = function(modalName, editUrl, id, title){
+		var $buttons = '<a href="#" data-id="'+id+'" data-toggle="modal" data-target="'+ modalName +'" data-url="'+editUrl+'?id='+id+'" data-title="'+(title||'新闻修改')+'" class="table-edit btn btn-primary btn-sm"><i class="fa fa-pencil"></i> 编辑</a>'
+		              +'  <a href="javascript:void(0)" data-id="'+id+'" class="table-del btn btn-danger btn-sm"><i class="fa fa-remove"></i> 删除</a>';
 	    return $buttons;
 	};
 });

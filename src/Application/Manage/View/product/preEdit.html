@@ -1,33 +1,8 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Product PreEdit</title>
-        {include file="../base_css.html"}
-        
-	</head>
-	<body class="no-skin">
-		<div class="container-fluid">
 			<div class="row">
-			  <div class="breadcrumbs">
-				<ul class="breadcrumb">
-					<li><i class="ace-icon fa fa-home home-icon"></i>首页</li>
-					<li><a href="{$listUrl}">产品</a></li>
-					<li class="active">修改</li>
-				</ul>
-				  <!-- /.breadcrumb -->
-			  </div>
-			  <!-- /.breadcrumbs -->
-			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="page-content">
-					<div class="page-header">
-						<h1>产品修改</h1>
-					</div>
-					<div class="row">
+				<div class="box">
+					<div class="box-body">
 						<div class="col-md-12">
-						    <form action="{$editUrl}" method="post" class="form-horizontal" role="form" id="form-data">
+						    <form action="{:U('manage/product/edit')}" method="post" class="form-horizontal" role="form" id="edit-form-data">
 						    	<div class="form-group">
 									<label class="col-md-2 control-label no-padding-right" for="title"> 全称  </label>
 									<div class="col-md-4">
@@ -41,7 +16,7 @@
 									</div>
 									<label class="col-md-1 control-label no-padding-right"> 排序号 </label>
 									<div class="col-md-2">
-										<input type="text" name="orderid" placeholder="排序号" value="{$product.orderid|default:'0'}">
+										<input type="text" name="orderid" placeholder="排序号" value="{$product.orderid|default='0'}" class="form-control">
 									</div>
 								</div>
                                 
@@ -63,20 +38,20 @@
 								
 								<div class="form-group">
 									<label class="col-md-2 control-label no-padding-right">产品缩略图</label>
-									<div class="col-md-5">
-										<input type="hidden" name="addtime" value="{$product.addtime|default:$smarty.now|date_format:'Y-m-d H:i:s'}">
+									<div class="col-md-10">
+										<input type="hidden" name="addtime" value="{$product.addtime|default=$Think.now|date='Y-m-d H:i:s',strtotime(###)}">
 										<input type="text" id="linkurl" name="linkurl" value="{$product.linkurl}" class="form-control">
 										<div id="upload-linkurl"></div>
 									</div>
 								</div>
 								
 								<div class="form-group">
-									<div class="col-md-12">产品图片列表<button type="button" onclick="addProduct()">+</button></div>
+									<div class="col-md-12">产品图片列表<button type="button" id="button-add-product">+</button></div>
 									<div class="photo-list">
-										{foreach $productPhotolinks as $productPhotolink}
+										<foreach name="$productPhotolinks" item="$productPhotolink">
 										<div class="photo-detail col-md-12" style="margin-top:5px">
 											
-											<label class="control-label col-md-2 no-padding-right"><button type="button" onclick="delProduct(this)">-</button> 标题</label>
+											<label class="control-label col-md-2 no-padding-right"><button type="button" id="button-del-product">-</button> 标题</label>
 											<div class="col-md-2">
 												<input type="hidden" name="photoids[]" value="{$productPhotolink.id}">
 												<input type="text" name="photolink-title_{$productPhotolink.id}" value="{$productPhotolink.title}">
@@ -88,7 +63,7 @@
 												<div id="upload-{$productPhotolink.id}"></div>
 											</div>
 										</div>
-										{/foreach}
+										</foreach>
 									</div>
 
 								</div>
@@ -109,12 +84,12 @@
 						    </form>
 					    </div>
 					</div>
-					<!-- /.row -->
+					<!-- /.box-body -->
 				</div>
-				<!-- /.page-content -->
+				<!-- /.box -->
 			</div>
-		</div>
-		{literal}
+			<!-- /.row -->
+
 		<script id="photolink_template" type="text/html">
 			<div class="photo-detail col-md-12" style="margin-top:5px">
 				<label class="control-label col-md-2 no-padding-right"><button type="button" onclick="delProduct(this)">-</button>  标题</label>
@@ -130,20 +105,17 @@
 				</div>
 			</div>
 		</script>
-		{/literal}
-		{include file="../base_js.html"}
-		<script src="{$baseUrl}/static/asset/layer/laytpl.js"></script>
-        <script src="{$baseUrl}/static/skin/manage/js/product.js"></script>
+
+
 		<script>
-			$(document).ready(function(){
-				UE.getEditor("content_container");
-				UE.getEditor("specialty_container");
-				
-				root.product.manage.add.init();
-				
-		{foreach $productPhotolinks as $productPhotolink}
-				root.CustomUploader.uploadImage.init("photolink-linkurl_{$productPhotolink.id}","upload-{$productPhotolink.id}","?m=upload&f=files");
-		{/foreach}
+			window.UEDITOR_HOME_URL = '{:C('base')}/ueditor/';
+		</script>
+		<script src="{:C('base')}/ueditor/ueditor.config.js"></script>
+		<script src="{:C('base')}/ueditor/ueditor.all.js"></script>
+		
+		<script>
+			seajs.use('skin/manage/js/product', function(product){
+				product.initEditForm();
 			});
 		</script>
 	</body>

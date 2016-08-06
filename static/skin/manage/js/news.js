@@ -40,26 +40,14 @@ define(function(require, exports, module){
 		    }],
 			"language": custom_datatables.dataTables_cn(),
 			'initComplete': function(){
-				$('div.toolbar').html('<button class="btn btn-primary btn-sm">新增</button>');
 				$('#data-table').colResizable({
 					liveDrag:true
 				});
 			}
 		});
-	};
-	
-	exports.initAddModal = function(){
 		
-		$('#content-modal').on('shown.bs.modal', function(event){
-			var source = $(event.relatedTarget);
-			var $this = $(this);
-			var url = source.attr('data-url'),
-			    title = source.attr('data-title');
-            $this.find('.modal-title').html(title);
-			$this.find('.modal-body').load(url);
-
-		});
 		
+		common.initModalInfo();
 	};
 	
 	exports.changeLinkurl = function(linktype){
