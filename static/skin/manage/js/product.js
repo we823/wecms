@@ -3,7 +3,8 @@ define(function(require, exports, module){
 	var DataTable = require('dataTables');
 	
 	var common = require('common'),
-	    custom_datatables = require('custom_datatables');
+	    custom_datatables = require('custom_datatables'),
+	    custom_uploader = require('custom_uploader');
 	require('colResizable');
 	var dt;
     
@@ -51,21 +52,23 @@ define(function(require, exports, module){
 		exports.delProduct(delUrl);
 	};
 	
-	exports.initAddForm = function(){
+	exports.initAddForm = function(base, uploadUrl){
 		UE.getEditor("content_container");
 		UE.getEditor("specialty_container");
 		
-		exports.addProduct();
+		custom_uploader.init('linkurl', 'upload-linkurl', base, uploadUrl);
+		exports.addProduct(base, uploadUrl);
 	};
 	
-	exports.initEditForm = function(){
+	exports.initEditForm = function(base, uploadUrl){
 		UE.getEditor("content_container");
 		UE.getEditor("specialty_container");
 		
-		exports.addProduct();
+		custom_uploader.init('linkurl', 'upload-linkurl', base, uploadUrl);
+		exports.addProduct(base, uploadUrl);
 	};
 	
-	exports.addProduct = function(){
+	exports.addProduct = function(base, uploadUrl){
 		var laytpl = require('laytpl');
 		$('#button-add-product').on('click', function(){
 			var $list = $('.photo-list'),
@@ -75,7 +78,7 @@ define(function(require, exports, module){
 			     };
 			laytpl(tpl).render(data, function(html){
 				$list.append(html);
-				//root.CustomUploader.uploadImage.init("photolink-linkurl_"+data.time,"upload-"+data.time,"?m=upload&f=files");
+				custom_uploader.init("photolink-linkurl_"+data.time,"upload-"+data.time,base, uploadUrl);
 			});
 		});
 		
@@ -100,5 +103,5 @@ define(function(require, exports, module){
 			}
 			
 		});
-	}; // delNews
+	}; // delProduct
 });

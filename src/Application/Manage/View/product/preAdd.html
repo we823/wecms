@@ -37,7 +37,7 @@
 					
 					<div class="form-group">
 						<label class="col-md-2 control-label no-padding-right">产品缩略图</label>
-						<div class="col-md-5">
+						<div class="col-md-10">
 							<input type="text" id="linkurl" name="linkurl" class="form-control">
 							<div id="upload-linkurl"></div>
 						</div>
@@ -89,13 +89,10 @@
 			</div>
 		</script>
         
-        <script>
-			window.UEDITOR_HOME_URL = '{:C('base')}/ueditor/';
-		</script>
-		<script src="{:C('base')}/ueditor/ueditor.config.js"></script>
-		<script src="{:C('base')}/ueditor/ueditor.all.js"></script>
+        <include file="Common/ueditor"/>
+		<include file="Common/webuploader"/>
         <script>
         	seajs.use('skin/manage/js/product', function(product){
-        		product.initAddForm();
+        		product.initAddForm("{:C('base')}","{:U('manage/uploader/index', 'f=img')}");
         	});
         </script>

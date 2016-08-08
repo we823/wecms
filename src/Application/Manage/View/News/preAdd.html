@@ -62,14 +62,11 @@
 	</div>
 	<!-- /.page-content -->
 </div>
-<script>
-	window.UEDITOR_HOME_URL = '{:C('base')}/ueditor/';
-</script>
-<script src="{:C('base')}/ueditor/ueditor.config.js"></script>
-<script src="{:C('base')}/ueditor/ueditor.all.js"></script>
+<include file="Common/ueditor"/>
+<include file="Common/webuploader"/>
 <script>
 	seajs.use('skin/manage/js/news', function(news){
-		news.changeLinkurl();
+		news.changeLinkurl(undefined, "{:C('base')}", "{:U('manage/uploader/index', 'f=files')}");
 		news.initEditor();
 		news.addForm("{:U('manage/news/preEdit')}");
 	});

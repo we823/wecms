@@ -4,7 +4,8 @@ define(function(require, exports, module){
 	var DataTable = require('dataTables');
 	
 	var common = require('common'),
-	    custom_datatables = require('custom_datatables');
+	    custom_datatables = require('custom_datatables'),
+	    custom_uploader = require('custom_uploader');
 	require('colResizable');
 	var dt;
 	exports.initTable = function(url, editUrl){
@@ -50,23 +51,28 @@ define(function(require, exports, module){
 		common.initModalInfo();
 	};
 	
-	exports.changeLinkurl = function(linktype){
+	exports.changeLinkurl = function(linktype, base, uploadUrl){
 		$('input[name=linktype]').on('click', function(){
 			var type = $(this).val();
 			if(type==0){
 				$('#linkurl').hide();
+				custom_uploader.destroy('upload2');
 			}else{
+				custom_uploader.init('linkurl', 'upload2', base, uploadUrl);
 				$('#linkurl').show();
 			}
 		});
 		if(linktype){
 			if(linktype==0){
 				$('#linkurl').hide();
+				custom_uploader.destroy('upload2');
 			}else{
 				$('#linkurl').show();
+				custom_uploader.init('linkurl', 'upload2', base, uploadUrl);
 			}
 		}else{
 			$('#linkurl').hide();
+			custom_uploader.destroy('upload2');
 		}
 		
 	};

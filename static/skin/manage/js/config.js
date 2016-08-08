@@ -4,6 +4,7 @@ seajs.config({
 		'bootstrap': 'asset/bootstrap/3.3.7/js/bootstrap_cmd.min',
 		'adminlte':'asset/adminlte/2.3.5/js/app_cmd.min',
 		'webuploader': 'asset/webuploader/webuploader',
+		'webuploader-css': 'asset/webuploader/webuploader.css',
 		'validate':'asset/validate/1.15.1/jquery.validate.min',
 		'validate-additional':'asset/validate/1.15.1/additional-methods.min',
 		'icheck': 'asset/iCheck/icheck',
@@ -23,6 +24,7 @@ seajs.config({
 		'colResizable':'asset/colresizable/colResizable-1.6.min',
 		'common':'common/common',
 		'custom_datatables':'common/custom_datatables',
+		'custom_uploader':'common/custom_uploader',
 		
 		'laytpl':'asset/layer/laytpl'
 	},

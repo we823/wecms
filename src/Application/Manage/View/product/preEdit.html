@@ -107,15 +107,12 @@
 		</script>
 
 
-		<script>
-			window.UEDITOR_HOME_URL = '{:C('base')}/ueditor/';
-		</script>
-		<script src="{:C('base')}/ueditor/ueditor.config.js"></script>
-		<script src="{:C('base')}/ueditor/ueditor.all.js"></script>
+		<include file="Common/ueditor"/>
+		<include file="Common/webuploader"/>
 		
 		<script>
 			seajs.use('skin/manage/js/product', function(product){
-				product.initEditForm();
+				product.initEditForm("{:C('base')}", "{:U('manage/uploader/index', 'f=img')}");
 			});
 		</script>
 	</body>
